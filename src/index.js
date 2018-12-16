@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Zoom from 'react-reveal/Zoom';
+import BoxList from './components/BoxList';
+import DashboardCard from './components/DashboardCard';
+import Grid from './components/Grid';
 
 const main_url = 'http://192.168.1.9/galadarihr/frontend/';
 const get_counts_url = 'http://192.168.1.9/galadarihr/frontend/site/get-counts/';
+const balance_days_url = 'http://192.168.1.9/galadarihr/frontend/site/get-balance-days/';
 
 class App extends Component {
 
@@ -42,24 +40,13 @@ class App extends Component {
     render() {
         return (
             <div>
+                <BoxList totalApplied={this.state.totalApplied} totalPending={this.state.totalPending} totalApproved={this.state.totalApproved} totalRejected={this.state.totalRejected} main_url={main_url} />
                 <div className="row">
-                    <Zoom>
-                        <div className="col-md-3">
-                            <Box theme="bg-aqua" count={this.state.totalApplied} icon="fa fa-shopping-cart" url="leave-h/index" desp="View More" name="Total Applied Leaves" id="TotalAppliedCount"/>
-                        </div>
-                        <div className="col-md-3">
-                            <Box theme="bg-yellow" count={this.state.totalPending} icon="fa fa-print" url="leave-h/index?LeaveHSearch[leave_status_id]=1" desp="View More" name="Total Pending Leaves"/>
-                        </div>
-                        <div className="col-md-3">
-                            <Box theme="bg-green" count={this.state.totalApproved} icon="fa fa-shopping-cart" url="leave-h/index?LeaveHSearch[leave_status_id]=2" desp="View More" name="Total Approved Leaves"/>
-                        </div>
-                        <div className="col-md-3">
-                            <Box theme="bg-red" count={this.state.totalRejected} icon="fa fa-shopping-cart" url="leave-h/index?LeaveHSearch[leave_status_id]=3" desp="View More" name="Total Rejected Leaves"/>
-                        </div>
-                    </Zoom> 
-                </div>
-                <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-6">
+                        <Grid 
+                            title="Balance Days" 
+                            balance_days_url={balance_days_url}
+                        />
                     </div>
                 </div>
             </div>
@@ -68,51 +55,7 @@ class App extends Component {
 }
 
 
-const Box = (props) => {
-    return (
-      <div className={ 'small-box ' + props.theme }>
-        <div className="inner">
-          <h3 id={ props.id }>{props.count}</h3>
 
-          <p>{props.name}</p>
-        </div>
-        <div className="icon">
-          <i className={props.icon}></i>
-        </div>
-        <a href={`${main_url}${props.url}`} className="small-box-footer">
-            {props.desp} <i className="fa fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    );
-}
-
-const CardBox = (props) => {
-    return (
-        <Card>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-                <i className="fa fa-arrow-circle-right"></i>
-            </Typography>
-            <Typography variant="h5" component="h2">
-              be
-              nev
-              lent
-            </Typography>
-            <Typography color="textSecondary">
-              adjective
-            </Typography>
-            <Typography component="p">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-    );
-}
 
 const app_root = document.getElementById("root");
 
