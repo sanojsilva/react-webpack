@@ -4,9 +4,10 @@ import BoxList from './components/BoxList';
 import DashboardCard from './components/DashboardCard';
 import Grid from './components/Grid';
 
-const main_url = 'http://192.168.1.9/galadarihr/frontend/';
-const get_counts_url = 'http://192.168.1.9/galadarihr/frontend/site/get-counts/';
-const balance_days_url = 'http://192.168.1.9/galadarihr/frontend/site/get-balance-days/';
+const ip = "112.135.92.58:20080";
+const main_url = 'http://' + ip + '/galadarihr/frontend/';
+const get_counts_url = 'http://' + ip + '/galadarihr/frontend/site/get-counts/';
+const balance_days_url = 'http://' + ip + '/galadarihr/frontend/site/get-balance-days/';
 
 class App extends Component {
 

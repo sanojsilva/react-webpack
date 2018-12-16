@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   output: {
-      path: path.resolve(__dirname, '../../../../www/html/galadarihr/frontend/js/main/'),
+      path: path.resolve(__dirname, '../html/galadarihr/frontend/js/main/'),
     filename: 'bundle.js'
   },
   module: {

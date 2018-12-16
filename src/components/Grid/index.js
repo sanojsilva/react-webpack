@@ -41,7 +41,7 @@ class Grid extends Component {
         super(props);
         this.state = {
             data: [
-                {leave_type: 'test', balance_days: '6'}
+                //{leave_type: 'test', balance_days: '6'}
             ]
         };
     }
